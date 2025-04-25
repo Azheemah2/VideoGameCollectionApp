@@ -12,17 +12,14 @@ import main.game.AbstractGame;
 import main.game.MultiplayerGame;
 import main.game.SinglePlayerGame;
 import main.game.UserProfile;
-import main.game.library.GameLibrary;
-import javafx.scene.layout.VBox;
+
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.geometry.Insets;
-
 
 public class GameLibraryApp extends Application {
     private List<UserProfile> users = new ArrayList<>();
@@ -52,7 +49,8 @@ public class GameLibraryApp extends Application {
         BorderPane root = new BorderPane();
         VBox formContainer = new VBox(15);
         formContainer.setPadding(new Insets(15));
-        formContainer.setStyle("-fx-background-color: #1e272e; -fx-padding: 20px; -fx-border-radius: 10px; -fx-border-color: #485460;");
+        formContainer.setStyle(
+                "-fx-background-color: #1e272e; -fx-padding: 20px; -fx-border-radius: 10px; -fx-border-color: #485460;");
 
         Label formTitle = new Label("Add New Game");
         formTitle.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;");
@@ -68,7 +66,6 @@ public class GameLibraryApp extends Application {
         }
         userDropdown.setValue(currentUser.getUsername());
         userDropdown.setOnAction(e -> switchUser(userDropdown.getValue()));
-
 
         Label titleLabel = new Label("Title:");
         titleLabel.setStyle("-fx-text-fill: white;");
@@ -104,7 +101,8 @@ public class GameLibraryApp extends Application {
         gameTypeDropdown.setPromptText("Game Type");
 
         Button addButton = new Button("Add Game");
-        addButton.setStyle("-fx-background-color: #0be881; -fx-text-fill: black; -fx-font-weight: bold; -fx-padding: 10px; -fx-border-radius: 5px;");
+        addButton.setStyle(
+                "-fx-background-color: #0be881; -fx-text-fill: black; -fx-font-weight: bold; -fx-padding: 10px; -fx-border-radius: 5px;");
 
         messageLabel = new Label();
         messageLabel.setStyle("-fx-text-fill: white;");
@@ -128,9 +126,8 @@ public class GameLibraryApp extends Application {
         searchButton = new Button("Search");
         searchButton.setOnAction(e -> searchGame(searchField.getText()));
 
-        addButton.setOnAction(e -> addGame(titleField.getText(), genreField.getText(), platformField.getText(), releaseYearField.getText(), developerField.getText(), gameTypeDropdown.getValue()));
-
-
+        addButton.setOnAction(e -> addGame(titleField.getText(), genreField.getText(), platformField.getText(),
+                releaseYearField.getText(), developerField.getText(), gameTypeDropdown.getValue()));
 
         formPane.addRow(0, new Label("User:"), userDropdown);
         formPane.addRow(1, titleLabel, titleField);
@@ -143,8 +140,6 @@ public class GameLibraryApp extends Application {
         formPane.addRow(8, selectGameLabel, gameDropdown);
         formPane.addRow(9, updateProgressLabel, progressField, updateProgressButton);
         formPane.addRow(10, searchGameLabel, searchField, searchButton);
-
-
 
         formContainer.getChildren().addAll(formTitle, formPane, messageLabel, displayArea);
 
@@ -170,8 +165,6 @@ public class GameLibraryApp extends Application {
 
         displayUserGames();
     }
-
-
 
     private void updateGameDropdown() {
         gameDropdown.getItems().clear();
@@ -234,9 +227,10 @@ public class GameLibraryApp extends Application {
         }
     }
 
-
-    private void addGame(String title, String genre, String platform, String releaseYear, String developer, String gameType) {
-        if (title.isEmpty() || genre.isEmpty() || platform.isEmpty() || releaseYear.isEmpty() || developer.isEmpty() || gameType == null) {
+    private void addGame(String title, String genre, String platform, String releaseYear, String developer,
+            String gameType) {
+        if (title.isEmpty() || genre.isEmpty() || platform.isEmpty() || releaseYear.isEmpty() || developer.isEmpty()
+                || gameType == null) {
             messageLabel.setText("Please fill in all fields.");
             messageLabel.setStyle("-fx-text-fill: red;");
             return;
@@ -254,13 +248,3 @@ public class GameLibraryApp extends Application {
         messageLabel.setStyle("-fx-text-fill: green;");
     }
 }
-
-
-
-
-
-
-
-
-
-

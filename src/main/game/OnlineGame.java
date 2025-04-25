@@ -2,12 +2,11 @@ package main.game;
 
 public class OnlineGame extends AbstractGame {
     private int progress;
-    private boolean isOnline;
 
     public OnlineGame(String title, String genre, String platform, int releaseYear, String developer) {
         super(title, genre, platform, releaseYear, developer);
         this.progress = 0;
-        this.isOnline = true;
+
     }
 
     public void updateProgress(int progress) {
